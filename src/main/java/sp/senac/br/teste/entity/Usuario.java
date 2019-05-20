@@ -24,9 +24,6 @@ public class Usuario {
     @Column
     private String perfil;
 
-    @Column
-    private String apelido;
-
     public Usuario(String nome, String email, String senha, String perfil) {
         this.nome = nome;
         this.email = email;
@@ -75,14 +72,6 @@ public class Usuario {
 
     public void setPerfil(String perfil) {
         this.perfil = perfil;
-    }
-
-    public String getApelido() {
-        return apelido;
-    }
-
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
     }
 
     @Override

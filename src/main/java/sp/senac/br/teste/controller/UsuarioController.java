@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sp.senac.br.teste.entity.Usuario;
-import sp.senac.br.teste.repositories.UsuarioRepository;
+import sp.senac.br.teste.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
@@ -16,8 +16,7 @@ public class UsuarioController {
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
+    private UsuarioService usuarioService;
 
     @GetMapping("/cadastroUsuario")
     public String usuario() {
@@ -33,7 +32,7 @@ public class UsuarioController {
 
         Usuario usuario = new Usuario(nome, email, senha, perfil);
 
-        usuarioRepository.save(usuario);
+        usuarioService.salvar(usuario);
 
         logger.info(usuario.toString());
 
