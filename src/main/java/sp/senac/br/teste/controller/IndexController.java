@@ -17,10 +17,15 @@ public class IndexController {
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("/index");
 
-        Usuario usuario = new Usuario("Ari", "ari@ari", "kh100hchareharriscado", "ADMIN");
-
-        usuarioRepository.save(usuario);
+        populaBanco();
 
         return mv;
+    }
+
+    private void populaBanco() {
+        for (int i = 0; i< 20; i++) {
+            Usuario usuario = new Usuario("Ari" + (i+1), "ari@ari", "kh100hchareharriscado", "ADMIN");
+            usuarioRepository.save(usuario);
+        }
     }
 }

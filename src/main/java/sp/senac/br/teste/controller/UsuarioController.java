@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import sp.senac.br.teste.entity.Usuario;
 import sp.senac.br.teste.service.UsuarioService;
+
+import java.util.List;
 
 @Controller
 public class UsuarioController {
@@ -37,6 +40,18 @@ public class UsuarioController {
         logger.info(usuario.toString());
 
         return "/cadastro_usuario";
+    }
+
+    @GetMapping("/listar")
+    public ModelAndView listarUsuario() {
+
+        Iterable<Usuario> usuarios = usuarioService.listarTodos();
+
+        ModelAndView mv = new ModelAndView("/listar_usuario");
+
+        mv.addObject("usuarios", usuarios);
+
+        return mv;
     }
 
 }

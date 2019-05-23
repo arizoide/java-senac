@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import sp.senac.br.teste.entity.Usuario;
 import sp.senac.br.teste.repositories.UsuarioRepository;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
 
@@ -15,4 +17,9 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    public Iterable<Usuario> listarTodos() {
+        Iterable<Usuario> usuarios = usuarioRepository.findAll();
+
+        return usuarios;
+    }
 }
